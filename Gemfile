@@ -36,3 +36,6 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "unicorn", ">= 4.3.1"
+gem "bootstrap-sass", ">= 2.2.2.0"
