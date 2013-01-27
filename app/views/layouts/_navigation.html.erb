@@ -1,1 +1,18 @@
 <%= link_to "Imapo", root_path, :class => 'brand' %>
+<ul class="nav">
+  <% if current_user %>
+    <li>
+      <%= link_to 'Upload Image', new_image_path %>
+    </li>
+    <li>
+      <%= link_to 'Edit User', edit_user_path(current_user) %>
+    </li> 
+    <li>
+      <%= link_to "Log out", logout_path %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "Log in", login_path  %>
+    </li>
+  <% end %>
+</ul>
