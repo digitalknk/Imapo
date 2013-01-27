@@ -2,12 +2,15 @@
 
 <p>
   <b>Image:</b>
-  <%= @image.image %>
+  <div><%= link_to image_tag(@image.image_url(:thumb)), @image.image_url %></div>
+<br />
+  <p><%= @image.image_url %></p>
+  <p><%= @image.image_url(:thumb) %></p>
 </p>
 
 <p>
   <b>User:</b>
-  <%= @image.user_id %>
+  <%= @image.user.email %>
 </p>
 
 
