@@ -1,4 +1,4 @@
-<%= form_for(@image) do |f| %>
+<%= form_for @image, :html => {:multipart => true} do |f| %>
   <% if @image.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :image %><br />
-    <%= f.text_field :image %>
+  <div>
+    <%= f.file_field :image %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <p>Please make sure you are only uploading a
+    <strong>JPEG</strong>,
+    <strong>JPG</strong>,
+    <strong>PNG</strong>, or
+    <strong>GIF</strong>. Otherwise your file will not upload.</p>
+  <%= hidden_field_tag :image_user_id, current_user.id %>
+  <p><%= f.submit "Upload Image" %></p>
 <% end %>
+
