@@ -23,3 +23,32 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
+
+.image-group .image-wrapper {
+  position: relative;
+}
+
+.image-group .image-wrapper .image {
+    position: relative;
+    margin: 0 auto;
+    display: table;
+}
+
+.admin-links {
+  position: absolute;      
+  top: 15px;
+  left: 0px;
+  .float: right;
+  padding: 5px;
+  background-color:rgba(0,0,0,0.4);
+  .background-color:rgba(255,255,255,0.5);
+  color: black;
+  .font-size: large;
+  font-weight: bold;
+}
+
+.image-wrapper a:link, .image-wrapper a:visited, .image-wrapper a:hover {
+  color: white;
+  background-color: rgba(0,0,0,0)
+
+}

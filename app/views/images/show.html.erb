@@ -3,8 +3,9 @@
 <p>
   <b>Image:</b>
   <div><%= link_to image_tag(@image.image_url(:thumb)), @image.image_url %></div>
-<br />
-  <p><%= @image.image_url %></p>
+  <p>Highlight text below and copy it:<br />
+    <input type="text" class="span5" name="image_url" value="<%= @image.image_url %>" readonly>
+  </p>
   <p><%= @image.image_url(:thumb) %></p>
 </p>
 
