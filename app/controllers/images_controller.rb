@@ -1,8 +1,8 @@
 class ImagesController < ApplicationController
-  # GET /images
-  # GET /images.json
+  before_filter :require_login
+
   def index
-    @images = Image.all
+    @images = Image.order("created_at desc").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -10,8 +10,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # GET /images/1
-  # GET /images/1.json
   def show
     @image = Image.find(params[:id])
 
@@ -21,8 +19,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # GET /images/new
-  # GET /images/new.json
   def new
     @image = Image.new
 
@@ -32,20 +28,17 @@ class ImagesController < ApplicationController
     end
   end
 
-  # GET /images/1/edit
   def edit
     @image = Image.find(params[:id])
   end
 
-  # POST /images
-  # POST /images.json
   def create
     @image = Image.new(params[:image])
     @image.user = current_user
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Image was successfully created.' }
         format.json { render json: @image, status: :created, location: @image }
       else
         format.html { render action: "new" }
@@ -54,8 +47,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # PUT /images/1
-  # PUT /images/1.json
   def update
     @image = Image.find(params[:id])
 
@@ -70,8 +61,6 @@ class ImagesController < ApplicationController
     end
   end
 
-  # DELETE /images/1
-  # DELETE /images/1.json
   def destroy
     @image = Image.find(params[:id])
     @image.destroy
