@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :set_content_type
 
   version :thumb do
-   process :resize_to_limit => [250, 250]
+   process :resize_to_limit => [260, 260]
   end
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -18,8 +18,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
